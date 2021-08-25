@@ -1,4 +1,4 @@
-<%--
+<%-- 수정해봄
   Class Name : index.jsp
   Description : 최초화면으로 메인화면으로 이동한다.(system)
   Modification Information
