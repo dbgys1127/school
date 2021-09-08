@@ -2,14 +2,14 @@ package egovframework.let.temp.service;
 
 public class TempVO {
 	
-	private int tempId;
+	private String tempId;
 	private String tempVal;
 	
 	
-	public int getTempId() {
+	public String getTempId() {
 		return tempId;
 	}
-	public void setTempId(int tempId) {
+	public void setTempId(String tempId) {
 		this.tempId = tempId;
 	}
 	public String getTempVal() {
@@ -18,7 +18,7 @@ public class TempVO {
 	public void setTempVal(String tempVal) {
 		this.tempVal = tempVal;
 	}
-	
-	
 
+	
+	
 }

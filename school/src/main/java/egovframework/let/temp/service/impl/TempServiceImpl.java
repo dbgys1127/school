@@ -4,9 +4,10 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import egovframework.let.temp.service.TempVO;
 import egovframework.let.temp.service.TempService;
+import egovframework.let.temp.service.TempVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 import egovframework.rte.fdl.property.EgovPropertyService;
 
 
@@ -18,17 +19,32 @@ public class TempServiceImpl extends EgovAbstractServiceImpl implements TempServ
 	
 	
 	
-//	@Resource(name = "tempMapper")
-//	private TempMapper tempMapper;
+	@Resource(name = "tempMapper")
+	private TempMapper tempMapper;
 		
 	
 	
 	@Resource(name = "tempDAO")
 	private TempDAO tempDAO;
+	
+	@Resource(name = "egovTempIdGnrService")
+	private EgovIdGnrService idgenService;
+	
+
 
 	@Override
 	public TempVO selectTemp(TempVO vo) throws Exception {
-		return tempDAO.selectTemp(vo);
+		return tempMapper.selectTemp(vo);
+	}
+	
+
+	public String insertTemp(TempVO vo) throws Exception{
+		String id = idgenService.getNextStringId();
+		vo.setTempId(id);
+		tempMapper.insertTemp(vo);
+		
+		
+		return id;
 	}
 	
 	
