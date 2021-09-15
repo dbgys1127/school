@@ -15,4 +15,19 @@
 		INSERT INTO lettemp2(TEMP_ID, TEMP_VAL) VALUES(#{tempId}, #{tempVal})
 	</insert>
 	
+	<select id="selectTempList" resultType="egovMap">
+		SELECT TEMP_ID, TEMP_VAL FROM lettemp2 LIMIT #{recordCountPerPage} OFFSET #{firstIndex}
+	</select>
+	
+	<select id="selectTempListCnt" resultType="java.lang.Integer">
+		SELECT COUNT(*) CNT FROM lettemp2
+	</select>
+	
+	<update id="updateTemp" parameterType="egovframework.let.temp.service.TempVO">
+		UPDATE lettemp2 SET TEMP_VAL = #{tempVal} WHERE TEMP_ID = #{tempId}
+	</update>
+	
+	<delete id="deleteTemp" parameterType="egovframework.let.temp.service.TempVO">
+		DELETE FROM lettemp2 WHERE TEMP_ID = #{tempId}
+	</delete>
 </mapper>

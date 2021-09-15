@@ -1,6 +1,16 @@
 package egovframework.let.temp.service;
 
-public class TempVO {
+import java.io.Serializable;
+
+import egovframework.com.cmm.ComDefaultVO;
+
+
+public class TempVO extends ComDefaultVO implements Serializable {
+
+	//ComDefaultVO 는 egov 에서 사용하는 유틸 패키지와 같은 느낌.
+	
+	
+	
 	
 	private String tempId;
 	private String tempVal;
