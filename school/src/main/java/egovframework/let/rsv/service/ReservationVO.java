@@ -1,8 +1,11 @@
 package egovframework.let.rsv.service;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ReservationVO {
+import egovframework.com.cmm.ComDefaultVO;
+
+public class ReservationVO extends ComDefaultVO implements Serializable{
 	//예약아이디
 	private String resveId;
 	//예약구분코드

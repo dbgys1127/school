@@ -7,6 +7,15 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 
+<c:choose>
+	<c:when test="${not empty searchVO.boardId}">
+		<c:set var="actionUrl" value="/board/update.do" />
+	</c:when>
+	<c:otherwise>
+		<c:set var="actionUrl" value="/board/insert.do" />
+	</c:otherwise>
+</c:choose>
+
 <!-- 기본 URL -->
 <c:url var="_BASE_PARAM" value="">
 	<c:param name="menuNo" value="50" />
@@ -24,22 +33,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <meta charset="UTF-8">
 <title>상세페이지</title>
+<link href="/css/common.css" rel="stylesheet" type="text/css">
 
-<link href="http://172.16.144.100:2021/asset/BBSTMP_0000000000001/style.css" rel="stylesheet">
-<link href="http://172.16.144.100:2021/asset/LYTTMP_0000000000000/style.css" rel="stylesheet">
+<!-- BBS Style -->
+<link href="/asset/BBSTMP_0000000000001/style.css" rel="stylesheet">
+<!-- 공통 Style -->
+<link href="/asset/LYTTMP_0000000000000/style.css" rel="stylesheet">
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 </head>
 <body>
-<c:choose>
-	<c:when test="${not empty searchVO.boardId}">
-		<c:set var="actionUrl" value="/board/update.do" />
-	</c:when>
-	<c:otherwise>
-		<c:set var="actionUrl" value="/board/insert.do" />
-	</c:otherwise>
-</c:choose>
+
+
 	<div class="container">
 		<div id="contents">
 			

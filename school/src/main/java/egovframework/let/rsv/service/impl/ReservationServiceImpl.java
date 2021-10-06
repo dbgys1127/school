@@ -14,7 +14,7 @@ import egovframework.rte.fdl.property.EgovPropertyService;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 @Service("reservationService")
-public class ReservationServiceImpl extends EgovAbstractServiceImpl implements ReservationService {
+public class ReservationServiceImpl implements ReservationService {
 
 	@Resource(name="propertiesService")
 	protected EgovPropertyService propertyService;

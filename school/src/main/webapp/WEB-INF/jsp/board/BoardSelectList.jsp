@@ -23,8 +23,12 @@
 <meta charset="UTF-8">
 <title>수업용 게시판</title>
 
-<link href="http://172.16.144.100:2021/asset/BBSTMP_0000000000001/style.css" rel="stylesheet">
-<link href="http://172.16.144.100:2021/asset/LYTTMP_0000000000000/style.css" rel="stylesheet">
+<link href="/css/common.css" rel="stylesheet" type="text/css">
+
+<!-- BBS Style -->
+<link href="/asset/BBSTMP_0000000000001/style.css" rel="stylesheet">
+<!-- 공통 Style -->
+<link href="/asset/LYTTMP_0000000000000/style.css" rel="stylesheet">
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
