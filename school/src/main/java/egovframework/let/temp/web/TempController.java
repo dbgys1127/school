@@ -52,7 +52,7 @@ public class TempController {
 	@RequestMapping("/temp/insert.do")
 	public String insert(@ModelAttribute("searchVO") TempVO searchVO) throws Exception{
 		tempService.insertTemp(searchVO);
-		return "redirect:TempList";
+		return "forward:/temp/selectList.do";
 	
 	
 	}
@@ -83,19 +83,21 @@ public class TempController {
 	}
 	
 
-	
+	//임시데이터 수정하기
 	@RequestMapping("/temp/update.do")
 	public String update(@ModelAttribute("searchVO") TempVO searchVO,  HttpServletRequest request, Model model) throws Exception{
 		tempService.updateTemp(searchVO);
 		return "forward:/temp/selectList.do";
 	}
 	
+	//임시데이터 삭제하기
 	@RequestMapping("/temp/delete.do")
 	public String delete(@ModelAttribute("searchVO") TempVO searchVO,  HttpServletRequest request, Model model) throws Exception{
 		tempService.deleteTemp(searchVO);
 		return "forward:/temp/selectList.do";
 	}
 	
+	// TODO 리리스트
 	
-	
+	// TODO fnxld
 }

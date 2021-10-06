@@ -60,6 +60,12 @@
     <!-- Exception 발생시 후처리용 별도작업을 위해 실행환경의  DefaultTraceHandler 를 활용하도록 설정 egovframework.rte.fdl.cmmn.trace.handler.DefaultTraceHandler -->
     <bean id="defaultTraceHandler" class="egovframework.com.cmm.EgovComTraceHandler" />
 	
+	
+	
+	
+	
+	
+	
     <!-- For Pagination Tag 설정-->
     <bean id="imageRenderer" class="egovframework.com.cmm.ImagePaginationRenderer"/>
     <bean id="paginationManager" class="egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationManager">
@@ -69,6 +75,18 @@
             </map>
         </property>
     </bean>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     <!-- MULTIPART RESOLVERS -->
     <!-- regular spring resolver -->    
