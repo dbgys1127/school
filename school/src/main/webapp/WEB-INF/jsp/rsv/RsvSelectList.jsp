@@ -22,7 +22,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <meta charset="UTF-8">
-<title>관리자가 보는 리스트</title>
+<title>사용자가 보는 리스트</title>
 
 <link href="/css/common.css" rel="stylesheet" type="text/css">
 
@@ -52,7 +52,7 @@
 					<div id="contents">
 						<!-- 검색 영역 -->
 						<div id="bbs_search">
-							<form name="frm" method="post" action="/admin/rsv/rsvSelectList.do">
+							<form name="frm" method="post" action="/rsv/selectList.do">
 								<fieldset>
 									<legend>검색조건입력폼</legend>
 									<label for="ftext" class="hdn">검색분류선택</label>
@@ -86,8 +86,7 @@
 								<th scope="col">운영일</th>
 								<th scope="col">운영시간</th>
 								<th scope="col">강사명</th>
-								<th scope="col">신청자</th>
-								<th scope="col">관리</th>
+								<th scope="col">상태</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -95,7 +94,7 @@
 								<tr>
 									<td class="num"><c:out value="${paginationInfo.totalRecordCount - ((searchVO.pageIndex -1) * searchVO.pageUnit) - (status.count - 1) }"></c:out></td>
 									<td class="tit">
-										<c:url var="updateUrl" value="/admin/rsv/rsvRegist.do${_BASE_PARAM}">
+										<c:url var="updateUrl" value="/rsv/rsvApplyRegist.do${_BASE_PARAM}">
 											<c:param name="resveId" value="${result.resveId}" />
 											<c:param name="pageIndex" value="${searchVO.pageIndex}" />
 										</c:url>
@@ -113,22 +112,15 @@
 									</td>
 									<td><c:out value="${result.useBeginTime} ~ ${result.useEndTime}" /></td>
 									<td><c:out value="${result.recNm}" /></td>
+								
 									<td>
-										<c:url var="applyUrl" value="/admin/rsv/selectApplyList.do${_BASE_PARAM}">
-											<c:param name="resveId" value="${result.resveId}" />
-											<c:param name="pageIndex" value="${searchVO.pageIndex}" />
-										</c:url>
-										
-										<a href="${applyUrl}" class="btn spot">신청자</a>
-									</td>
-									<td>
-										<a href="${updateUrl}" class="btn spot">수정</a>
-										<br/><br/>
-										<c:url var="deleteUrl" value="/admin/rsv/rsvDelete.do${_BASE_PARAM}">
-											<c:param name="resveId" value="${result.resveId}" />
-											<c:param name="pageIndex" value="${searchVO.pageIndex}" />
-										</c:url>
-										<a href="${deleteUrl}" class="btn spot btn-del">삭제</a>
+										<c:choose>
+											<c:when test="${result.applyStatus eq '1'}">접수대기중</c:when>
+											<c:when test="${result.applyStatus eq '2'}">접수중</c:when>
+											<c:when test="${result.applyStatus eq '3'}">접수마감</c:when>
+											<c:when test="${result.applyStatus eq '4'}">운영중</c:when>
+											<c:when test="${result.applyStatus eq '5'}">완전종료</c:when>
+										</c:choose>
 									</td>
 								</tr>
 							</c:forEach>
@@ -144,15 +136,13 @@
 				</div>
 				
 				 	<div id="paging">
-						<c:url var="pageUrl" value="/admin/rsv/rsvSelectList.do${_BASE_PARAM}"></c:url>
+						<c:url var="pageUrl" value="/rsv/selectList.do${_BASE_PARAM}"></c:url>
 						<c:set var="pagingParam"><c:out value="${pageUrl}" /></c:set>
 						<ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="${pagingParam}" />
 					</div>
 					
 					
-				 	<div class="btn-cont ar">
-						<a href="/admin/rsv/rsvRegist.do" class="btn spot"><i class="ico-check-spot"></i> 등록</a>
-					</div> 
+				 	
 			</div>
 			<!-- //현재위치 네비게이션  끝 -->
 		</div>

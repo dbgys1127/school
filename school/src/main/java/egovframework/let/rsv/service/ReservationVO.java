@@ -34,7 +34,7 @@ public class ReservationVO extends ComDefaultVO implements Serializable{
 	//사용여부
 	private String useAt;
 	//최초등록시점
-	private String frstRegistPnttm;
+	private Date frstRegistPnttm;
 	//최조등록자아이디
 	private String frstRegisterId;
 	//최초수정시점
@@ -134,10 +134,10 @@ public class ReservationVO extends ComDefaultVO implements Serializable{
 	public void setUseAt(String useAt) {
 		this.useAt = useAt;
 	}
-	public String getFrstRegistPnttm() {
+	public Date getFrstRegistPnttm() {
 		return frstRegistPnttm;
 	}
-	public void setFrstRegistPnttm(String frstRegistPnttm) {
+	public void setFrstRegistPnttm(Date frstRegistPnttm) {
 		this.frstRegistPnttm = frstRegistPnttm;
 	}
 	public String getFrstRegisterId() {

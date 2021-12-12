@@ -76,6 +76,17 @@ String menuNo = ((String)session.getAttribute("menuNo")!=null)?(String)session.g
 			</ul> 
 		</li>
 		<% } %>
+		
+		<% if (menuNo.indexOf("7")==0) {%>
+		<li class="leftmenu_dept01">
+			<a href="/rsv/selectList.do?menuNo=7">예약</a>
+			<ul>
+				<li class="dept02"><a href="/rsv/selectList.do?menuNo=7">예약</a></li>
+			</ul>
+		</li>
+		
+		<%} %>
+		
 	</ul>
 	</div>
 	<div class="bottom"></div>		

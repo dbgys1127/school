@@ -44,11 +44,20 @@
 					COUNT(*) 
 				FROM RESVEREQSTINFO B
 				WHERE A.RESVE_ID = B.RESVE_ID) AS APPLY_CNT
+				
+				<!-- 1:접수대기중, 2:접수중, 3:접수마감(운영준비중), 4:운영중, 5:완전종료  -->
 			<![CDATA[
-			, CASE WHEN DATE_FORMAT(NOW(), '%Y-%m-%d') < A.REQST_BGNDE THEN 1
-				   WHEN DATE_FORMAT(NOW(), '%Y-%m-%d') >= A.REQST_BGNDE AND DATE_FORMAT(NOW(), '%Y-%m-%d') <= A.REQST_ENDDE THEN 2
-				   WHEN DATE_FORMAT(NOW(), '%Y-%m-%d') > A.REQST_ENDDE AND DATE_FORMAT(NOW(), '%Y-%m-%d') < A.USE_BEGIN_DT THEN 3
-				   WHEN DATE_FORMAT(NOW(), '%Y-%m-%d') >= A.USE_BEGIN_DT AND DATE_FORMAT(NOW(), '%Y-%m-%d') <= A.USE_END_DT THEN 4
+			, CASE WHEN DATE_FORMAT(NOW(), '%Y-%m-%d') < A.REQST_BGNDE THEN 1 
+			
+				   WHEN DATE_FORMAT(NOW(), '%Y-%m-%d') >= A.REQST_BGNDE 
+				   		AND DATE_FORMAT(NOW(), '%Y-%m-%d') <= A.REQST_ENDDE THEN 2
+				   		
+				   WHEN DATE_FORMAT(NOW(), '%Y-%m-%d') > A.REQST_ENDDE 
+				   		AND DATE_FORMAT(NOW(), '%Y-%m-%d') < A.USE_BEGIN_DT THEN 3
+				   		
+				   WHEN DATE_FORMAT(NOW(), '%Y-%m-%d') >= A.USE_BEGIN_DT 
+				   		AND DATE_FORMAT(NOW(), '%Y-%m-%d') <= A.USE_END_DT THEN 4
+				   		
 			  	   ELSE 5
 			  END AS APPLY_STATUS
 			 ]]>
